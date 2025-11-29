@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -11,17 +11,25 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-  form; // declaramos la propiedad
+  form;
 
   constructor(private fb: FormBuilder) {
-    // inicializamos aquí, cuando fb ya existe
     this.form = this.fb.group({
       nombre: ['', Validators.required],
       apellidos: ['', Validators.required],
       correo: ['', [Validators.required, Validators.email]],
+      contrasena: ['', [Validators.required, Validators.minLength(6)]],
+      confirmarContrasena: ['', Validators.required],
       fecha: ['', Validators.required],
       celular: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]]
-    });
+    }, { validators: this.passwordsMatchValidator });
+  }
+
+  
+  passwordsMatchValidator(control: AbstractControl): ValidationErrors | null {
+    const pass = control.get('contrasena')?.value;
+    const confirm = control.get('confirmarContrasena')?.value;
+    return pass === confirm ? null : { passwordsMismatch: true };
   }
 
   crearCuenta() {

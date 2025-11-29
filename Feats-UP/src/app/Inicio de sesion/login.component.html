@@ -5,7 +5,7 @@
     <p class="subtitulo">Accede a tu cuenta</p>
 
     <form [formGroup]="form" (ngSubmit)="ingresar()">
-      <!-- Correo -->
+      
       <label for="correo">Correo Electrónico</label>
       <input id="correo" type="email" formControlName="correo" placeholder="correo@ejemplo.com" />
       <div class="error" *ngIf="form.get('correo')?.touched && form.get('correo')?.invalid">
@@ -13,7 +13,6 @@
         <small *ngIf="form.get('correo')?.errors?.['email']">Formato de correo inválido</small>
       </div>
 
-      <!-- Contraseña -->
       <label for="contrasena">Contraseña</label>
       <input id="contrasena" type="password" formControlName="contrasena" placeholder="Tu contraseña" />
       <div class="error" *ngIf="form.get('contrasena')?.touched && form.get('contrasena')?.invalid">
