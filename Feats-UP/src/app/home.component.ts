@@ -1,29 +1,28 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterModule, CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
   usuario = {
     nombre: 'aa ss',
-    correo: 'angek@gmail.com'
+    correo: 'angek@gmail.com',
+    contrasena: '••••••••'
   };
 
   totalReservaciones = 0;
 
   cerrarSesion() {
     console.log('Sesión cerrada');
-    // Aquí puedes agregar lógica de logout o redirección
   }
 
   crearReservacion() {
     console.log('Crear nueva reservación');
-    // Aquí puedes navegar o abrir formulario
   }
 }

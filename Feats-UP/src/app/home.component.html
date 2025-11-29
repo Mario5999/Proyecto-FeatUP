@@ -4,22 +4,27 @@
     <button class="btn-cerrar" (click)="cerrarSesion()" routerLink="/login">Cerrar Sesión</button>
   </header>
 
-  <section class="resumen">
-    <div class="info-usuario">
-      <p><strong>Correo:</strong> {{ usuario.correo }}</p>
+  <section class="tarjetas">
+    <div class="card">
+      <div class="icono">📅</div>
+      <div class="titulo">Total Reservaciones</div>
+      <div class="valor">{{ totalReservaciones }}</div>
     </div>
 
-    <div class="total-box">
-      <h2>Total Reservaciones</h2>
-      <div class="contador">{{ totalReservaciones }}</div>
+    <div class="card">
+      <div class="icono">👤</div>
+      <div class="titulo">Usuario</div>
+      <div class="valor">{{ usuario.correo }}</div>
     </div>
+  </section>
 
-    <button class="btn-nueva" (click)="crearReservacion()">Nueva Reservación</button>
+  <section class="acciones">
+    <button class="btn-verde" (click)="crearReservacion()">Nueva Reservación</button>
   </section>
 
   <section class="estado">
     <h3>Sin Reservaciones</h3>
     <p>Aún no tienes ninguna reservación registrada</p>
-    <button class="btn-crear" (click)="crearReservacion()">Crear tu Primera Reservación</button>
+    <button class="btn-verde" (click)="crearReservacion()">Crear tu Primera Reservación</button>
   </section>
 </div>

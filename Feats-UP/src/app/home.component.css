@@ -24,37 +24,45 @@
   cursor: pointer;
 }
 
-.resumen {
+.tarjetas {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
   margin-top: 2rem;
-  background: white;
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap;
 }
 
-.info-usuario {
-  margin-bottom: 1rem;
-  font-size: 1rem;
+.card {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 240px;
+  height: 160px;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.icono {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.titulo {
+  font-size: 1.1rem;
+  font-weight: 600;
   color: #333;
 }
 
-.total-box {
-  margin-bottom: 1rem;
-}
-
-.contador {
-  font-size: 2rem;
+.valor {
+  font-size: 1.6rem;
   font-weight: bold;
-  color: #388e3c;
+  color: #1976d2;
+  margin-top: 0.5rem;
 }
 
-.btn-nueva {
-  background-color: #388e3c;
-  color: white;
-  border: none;
-  padding: 0.8rem 1.2rem;
-  border-radius: 8px;
-  cursor: pointer;
+.acciones {
+  text-align: center;
+  margin-top: 2rem;
 }
 
 .estado {
@@ -65,12 +73,17 @@
   border-radius: 12px;
 }
 
-.btn-crear {
-  margin-top: 1rem;
+.btn-verde {
   background-color: #4caf50;
   color: white;
   border: none;
   padding: 0.8rem 1.2rem;
   border-radius: 8px;
+  font-size: 1rem;
   cursor: pointer;
+  margin-top: 1rem;
+}
+
+.btn-verde:hover {
+  background-color: #43a047;
 }
