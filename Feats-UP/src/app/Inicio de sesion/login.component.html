@@ -5,6 +5,7 @@
     <p class="subtitulo">Accede a tu cuenta</p>
 
     <form [formGroup]="form" (ngSubmit)="ingresar()">
+      <!-- Correo -->
       <label for="correo">Correo Electrónico</label>
       <input id="correo" type="email" formControlName="correo" placeholder="correo@ejemplo.com" />
       <div class="error" *ngIf="form.get('correo')?.touched && form.get('correo')?.invalid">
@@ -12,16 +13,12 @@
         <small *ngIf="form.get('correo')?.errors?.['email']">Formato de correo inválido</small>
       </div>
 
-      <label for="nombre">Nombre</label>
-      <input id="nombre" type="text" formControlName="nombre" placeholder="Tu nombre" />
-      <div class="error" *ngIf="form.get('nombre')?.touched && form.get('nombre')?.invalid">
-        <small>Este campo es obligatorio</small>
-      </div>
-
-      <label for="apellidos">Apellidos</label>
-      <input id="apellidos" type="text" formControlName="apellidos" placeholder="Tus apellidos" />
-      <div class="error" *ngIf="form.get('apellidos')?.touched && form.get('apellidos')?.invalid">
-        <small>Este campo es obligatorio</small>
+      <!-- Contraseña -->
+      <label for="contrasena">Contraseña</label>
+      <input id="contrasena" type="password" formControlName="contrasena" placeholder="Tu contraseña" />
+      <div class="error" *ngIf="form.get('contrasena')?.touched && form.get('contrasena')?.invalid">
+        <small *ngIf="form.get('contrasena')?.errors?.['required']">Este campo es obligatorio</small>
+        <small *ngIf="form.get('contrasena')?.errors?.['minlength']">Debe tener al menos 6 caracteres</small>
       </div>
 
       <button type="submit" class="btn-ingresar">Ingresar</button>

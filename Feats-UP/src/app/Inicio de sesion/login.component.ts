@@ -16,8 +16,7 @@ export class LoginComponent {
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
       correo: ['', [Validators.required, Validators.email]],
-      nombre: ['', Validators.required],
-      apellidos: ['', Validators.required]
+      contrasena: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
 
