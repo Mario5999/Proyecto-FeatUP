@@ -4,13 +4,18 @@ import { InicioComponent } from './inicio.component';
 export const routes: Routes = [
   { path: '', component: InicioComponent },
   {
+    path: 'inicio',
+    loadComponent: () =>
+      import('./inicio.component').then(m => m.InicioComponent)
+  },
+  {
     path: 'login',
     loadComponent: () =>
       import('./login.component').then(m => m.LoginComponent)
   },
   {
-    path: 'inicio',
+    path: 'register',
     loadComponent: () =>
-      import('./inicio.component').then(m => m.InicioComponent)
+      import('./register.component').then(m => m.RegisterComponent)
   }
 ];
