@@ -1,0 +1,25 @@
+<div class="home-container">
+  <header class="encabezado">
+    <h1>Bienvenido, {{ usuario.nombre }}</h1>
+    <button class="btn-cerrar" (click)="cerrarSesion()" routerLink="/login">Cerrar Sesión</button>
+  </header>
+
+  <section class="resumen">
+    <div class="info-usuario">
+      <p><strong>Correo:</strong> {{ usuario.correo }}</p>
+    </div>
+
+    <div class="total-box">
+      <h2>Total Reservaciones</h2>
+      <div class="contador">{{ totalReservaciones }}</div>
+    </div>
+
+    <button class="btn-nueva" (click)="crearReservacion()">Nueva Reservación</button>
+  </section>
+
+  <section class="estado">
+    <h3>Sin Reservaciones</h3>
+    <p>Aún no tienes ninguna reservación registrada</p>
+    <button class="btn-crear" (click)="crearReservacion()">Crear tu Primera Reservación</button>
+  </section>
+</div>
