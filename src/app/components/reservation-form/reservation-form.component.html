@@ -1,0 +1,154 @@
+<div class="container">
+  <div class="card">
+    <!-- Header -->
+    <button class="back-button" (click)="goToDashboard()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+      Volver al Dashboard
+    </button>
+
+    <!-- Icon -->
+    <div class="icon-container">
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+    </div>
+
+    <!-- Title -->
+    <h1 class="title">Nueva Reservación</h1>
+    <p class="subtitle">Completa los datos para tu reservación</p>
+
+    <!-- Client Name -->
+    <div class="form-group">
+      <label class="label">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00C9A7" stroke-width="2">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+          <circle cx="9" cy="7" r="4"></circle>
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+          <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+        </svg>
+        Nombre del Cliente
+      </label>
+      <input 
+        type="text" 
+        class="input" 
+        [(ngModel)]="clientName" 
+        placeholder="aa ss"
+      />
+    </div>
+
+    <!-- Area Selection -->
+    <div class="form-group">
+      <label class="label">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00C9A7" stroke-width="2">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+          <circle cx="12" cy="10" r="3"></circle>
+        </svg>
+        Selecciona el Área
+      </label>
+      <div class="areas-grid">
+        <div 
+          *ngFor="let area of areas" 
+          class="area-card"
+          [class.selected]="selectedArea === area.name"
+          (click)="selectArea(area.name)"
+        >
+          <div class="check-badge" *ngIf="selectedArea === area.name">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+          <div class="area-emoji">{{ area.emoji }}</div>
+          <div class="area-name">{{ area.name }}</div>
+          <div class="area-desc">{{ area.description }}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Time and People -->
+    <div class="form-row">
+      <div class="form-group">
+        <label class="label">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00C9A7" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          Horario de Reservación
+        </label>
+        <input 
+          type="time" 
+          class="input" 
+          [(ngModel)]="time"
+        />
+      </div>
+
+      <div class="form-group">
+        <label class="label">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00C9A7" stroke-width="2">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+          Número de Personas
+        </label>
+        <input 
+          type="number" 
+          class="input" 
+          [(ngModel)]="people" 
+          placeholder="17"
+        />
+      </div>
+    </div>
+
+    <!-- Warning -->
+    <div class="warning-box">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF6B6B" stroke-width="2">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="12" y1="8" x2="12" y2="12"></line>
+        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+      </svg>
+      <div class="warning-text">
+        <div>• El horario de reservación es obligatorio</div>
+        <div>• El número de personas debe ser mayor a 0</div>
+      </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="summary-box">
+      <div class="summary-header">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00C9A7" stroke-width="2">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        <h3>Resumen de Reservación</h3>
+      </div>
+      <div class="summary-grid">
+        <div class="summary-item">
+          <div class="summary-label">Cliente:</div>
+          <div class="summary-value">{{ clientName }}</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-label">Área:</div>
+          <div class="summary-value">{{ selectedArea }}</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-label">Horario:</div>
+          <div class="summary-value">{{ time }}</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-label">Personas:</div>
+          <div class="summary-value">{{ people }}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Confirm Button -->
+    <button class="confirm-button" (click)="confirmReservation()">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+      Confirmar Reservación
+    </button>
+  </div>
+</div>
